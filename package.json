@@ -1,0 +1,29 @@
+{
+  "name": "votacao-ufscar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "execa": "^0.4.0",
+    "express": "^4.13.4",
+    "got": "^6.3.0",
+    "jsdom": "^9.1.0",
+    "mongodb": "^2.1.20",
+    "pug": "^2.0.0-alpha8",
+    "tmp": "0.0.28"
+  },
+  "devDependencies": {
+    "xo": "^0.15.1"
+  },
+  "xo": {
+    "space": 4,
+    "esnext": true
+  }
+}

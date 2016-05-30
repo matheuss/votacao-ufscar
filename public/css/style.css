@@ -1,0 +1,7 @@
+.card {
+    margin-top: 15% !important;
+}
+
+a.disabled {
+    color: gray;
+}

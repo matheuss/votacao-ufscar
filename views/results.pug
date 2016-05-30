@@ -1,0 +1,48 @@
+//
+   Created by matheus on 5/30/16.
+
+html
+    head
+        title Votação – Greve na UFSCar – Resultados
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
+    body
+        .container
+            .row
+                table
+                    thead
+                        tr
+                            th Greve
+                            th Trancamento
+                    tbody
+                        tr
+                            td #[b Sim]: #{results.strikeYes} (#{(results.strikeYes / results.total).toPrecision(4) * 100} %)
+                            td #[b Sim]: #{results.lockingYes} (#{(results.lockingYes / results.total).toPrecision(4) * 100} %)
+                        tr
+                            td #[b Não]: #{results.strikeNo} (#{(results.strikeNo / results.total).toPrecision(4) * 100} %)
+                            td #[b Não]: #{results.lockingNo} (#{(results.lockingNo / results.total).toPrecision(4) * 100} %)
+                        tr
+                            td #[b Total]: #{results.total}
+                            td #[b Total]: #{results.total}
+
+
+            .row
+                table
+                    thead
+                        tr
+                            th Nome
+                            th RA
+                            th Curso
+                            th Campus
+                            th Greve
+                            th Trancamento
+                    tbody
+                        each vote in results.votes
+                            tr
+                                td #{vote.student.name}
+                                td #{vote.student.RA}
+                                td #{vote.student.course}
+                                td #{vote.student.campus}
+                                td #{vote.strike}
+                                td #{vote.locking}

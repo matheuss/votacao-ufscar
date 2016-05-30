@@ -1,0 +1,51 @@
+html
+    head
+        title Votação – Greve na UFSCar
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
+    body
+        .container
+            .row
+                .col.s12.m8.l4.offset-m2.offset-l4
+                    .card.z-depth-2
+                        .card-content
+                            span.card-title Greve – UFSCar
+                            .content
+                                p Você é a favor da greve?
+                                .row
+                                    .input-field.col.s12
+                                        p
+                                            input(name='strike' type='radio' id='yes-strike' value='Sim')
+                                            label(for='yes-strike') Sim
+                                        p
+                                            input(name='strike' type='radio' id='no-strike' value='Não')
+                                            label(for='no-strike') Não
+                                p Você é a favor do trancamento dos ATs?
+                                .row
+                                    .input-field.col.s12
+                                        p
+                                            input(name='locking' type='radio' id='yes-locking' value='Sim')
+                                            label(for='yes-locking') Sim
+                                        p
+                                            input(name='locking' type='radio' id='no-locking' value='Não')
+                                            label(for='no-locking') Não
+                                .row
+                                    .input-field.col.s12
+                                        input.validate(id='code' type='text' placeholder='Código de Acesso')
+                                        label(for='code') Atestado de matrícula
+                                .message
+                        .card-action
+                            a(href='#' id='button') Enviar
+                            .preloader-wrapper.small
+                                .spinner-layer.spinner-yellow-only
+                                    .circle-clipper.left
+                                        .circle
+                                    .gap-patch
+                                        .circle
+                                    .circle-clipper.right
+                                        .circle
+
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js')
+        script(src='/js/script.js')
