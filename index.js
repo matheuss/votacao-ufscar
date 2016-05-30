@@ -33,7 +33,6 @@ MongoClient.connect('mongodb://localhost/strike-ufscar', {promiseLibrary: Promis
 });
 
 app.get('/', (req, res) => {
-    console.log('index');
     res.render('index');
 });
 
@@ -85,7 +84,6 @@ app.post('/vote', (req, res) => {
 
         got.stream($(form)[0].action, options).pipe(fs.createWriteStream(file)).on('finish', () => {
             execa.stdout(path.join(__dirname, 'pdf.sh'), [file]).then(data => {
-                console.log(data);
                 data = data.replace('\n', ' ').replace('Atestamos, para os devidos fins, que', '').replace(' Nº ', '');
                 data = data.replace('do curso de', '').replace(' ministrado no Campus', '');
                 data = data.substring(0, data.indexOf(', reconhecido/autorizado')).split(',');
@@ -105,8 +103,6 @@ app.post('/vote', (req, res) => {
                     res.json({error: 'database'});
                 });
             }).catch(err => {
-                console.log(file);
-                console.log(err);
                 if (err.stderr.indexOf('Could not open')) {
                     res.json({error: 'invalid code'});
                 } else {
