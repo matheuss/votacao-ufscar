@@ -14,15 +14,19 @@ html
                     thead
                         tr
                             th Greve
+                            th Paralisação
                             th Trancamento
                     tbody
                         tr
                             td #[b Sim]: #{results.strikeYes} (#{(results.strikeYes / results.total).toPrecision(4) * 100} %)
+                            td #[b Sim]: #{results.standstillYes} (#{(results.standstillYes / results.total).toPrecision(4) * 100} %)
                             td #[b Sim]: #{results.lockingYes} (#{(results.lockingYes / results.total).toPrecision(4) * 100} %)
                         tr
                             td #[b Não]: #{results.strikeNo} (#{(results.strikeNo / results.total).toPrecision(4) * 100} %)
+                            td #[b Não]: #{results.standstillNo} (#{(results.standstillNo / results.total).toPrecision(4) * 100} %)
                             td #[b Não]: #{results.lockingNo} (#{(results.lockingNo / results.total).toPrecision(4) * 100} %)
                         tr
+                            td #[b Total]: #{results.total}
                             td #[b Total]: #{results.total}
                             td #[b Total]: #{results.total}
 

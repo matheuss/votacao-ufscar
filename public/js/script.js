@@ -6,10 +6,11 @@ $(function () {
     $('#button-submit').on('click', function () {
         var strike = $('input[name="strike"]:checked').val();
         var locking = $('input[name="locking"]:checked').val();
+        var standstill = $('input[name="standstill"]:checked').val();
         var code = $('#code').val();
 
-        if (strike === undefined || locking === undefined) {
-            return Materialize.toast('As duas respostas são obrigatórias', 2000);
+        if (strike === undefined || locking === undefined || standstill === undefined) {
+            return Materialize.toast('As três respostas são obrigatórias', 2000);
         }
 
         if (!code) {

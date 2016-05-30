@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 
 app.post('/vote', (req, res) => {
     const body = req.body;
-    if (!body.strike || !body.locking) {
+    if (!body.strike || !body.locking || !body.standstill) {
         return res.json({error: 'your vote cannot be blank'});
     }
     if (!body.code) {
@@ -47,9 +47,10 @@ app.post('/vote', (req, res) => {
 
     body.strike = body.strike || '---';
     body.locking = body.locking || '---';
+    body.standstill = body.standstill || '---';
 
     let invalid = false;
-    [body.strike, body.locking].forEach(el => {
+    [body.strike, body.locking, body.standstill].forEach(el => {
         if (options.indexOf(el) === -1) {
             invalid = true;
         }
@@ -114,7 +115,7 @@ app.post('/vote', (req, res) => {
 });
 
 app.get('/results', (req, res) => {
-    const results = {strikeYes: 0, strikeNo: 0, lockingYes: 0, lockingNo: 0, total: 0, votes};
+    const results = {strikeYes: 0, strikeNo: 0, lockingYes: 0, lockingNo: 0, standstillYes: 0, standstillNo: 0 total: 0, votes};
     votes.find({}).toArray().then(docs => {
         results.votes = docs.map(doc => {
             doc.student.RA = doc.student.RA.replace(/(\d)(?:\d{4})(\d)/, '$1****$2');
@@ -131,6 +132,12 @@ app.get('/results', (req, res) => {
                 results.lockingYes++;
             } else if (doc.locking === 'Não') {
                 results.lockingNo++;
+            }
+
+            if (doc.standstill === 'Sim') {
+                results.standstillYes++;
+            } else if (doc.standstill === 'Não') {
+                results.standstillNo++;
             }
 
             return doc;
