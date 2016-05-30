@@ -86,6 +86,7 @@ app.post('/vote', (req, res) => {
             execa.stdout(path.join(__dirname, 'pdf.sh'), [file]).then(data => {
                 data = data.replace('\n', ' ').replace('Atestamos, para os devidos fins, que', '').replace(' Nº ', '');
                 data = data.replace('do curso de', '').replace(' ministrado no Campus', '');
+                data = data.replace('ministrado em Campus', '');
                 data = data.substring(0, data.indexOf(', reconhecido/autorizado')).split(',');
                 data = data.map(el => el.trim());
 
