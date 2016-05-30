@@ -3,7 +3,7 @@
  */
 
 $(function () {
-    $('#button').on('click', function () {
+    $('#button-submit').on('click', function () {
         var strike = $('input[name="strike"]:checked').val();
         var locking = $('input[name="locking"]:checked').val();
         var code = $('#code').val();
@@ -26,14 +26,16 @@ $(function () {
 
         var p = $('<p></p>');
         var input = ('input');
-        var button = $("a");
+        var buttonSubmit = $("#button-submit");
+        var buttonResults = $("#button-results");
         var loading = $('.preloader-wrapper');
         var message = $('.message');
 
         $(message).empty();
         $(input).prop('disabled', true);
         $(loading).addClass('active');
-        $(button).animate({width: 'toggle'});
+        $(buttonSubmit).animate({width: 'toggle'});
+        $(buttonResults).animate({width: 'toggle'});
 
         var post = $.post('/vote', {strike: strike, locking: locking, code: code});
         post.done(function (vote) {
@@ -66,21 +68,18 @@ $(function () {
                 $(action).slideUp();
                 $('.content').slideUp('slow', function () {
                     $(this).html(p);
-                    $(button).prop('href', '/results');
-                    $(button).text('Resultados');
 
-                    $(button).animate({width: 'toggle'});
+                    $(buttonResults).animate({width: 'toggle'});
                     $(loading).removeClass('active');
 
                     $(this).slideDown('slow');
                     $(action).slideDown('slow');
-
-                    $(button).unbind('click');
                 });
 
             } else {
                 $(input).prop('disabled', false);
-                $(button).animate({width: 'toggle'});
+                $(buttonSubmit).animate({width: 'toggle'});
+                $(buttonResults).animate({width: 'toggle'});
                 $(loading).removeClass('active');
                 $(message).html(p);
             }
